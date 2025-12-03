@@ -1,4 +1,3 @@
-
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
@@ -9,15 +8,24 @@ public class GameManager : MonoBehaviour
     public int collectedItems = 0;
     public int totalItemsInLevel = 3;
     public int currentLevel = 1;
+    public int totalLevels = 3;
     
     void Start()
     {
+        // Determine current level from scene name
         string sceneName = SceneManager.GetActiveScene().name;
-        if (sceneName == "Level1") currentLevel = 1;
-        else if (sceneName == "Level2") currentLevel = 2;
-        else if (sceneName == "Level3") currentLevel = 3;
+        if (sceneName == "Level1_Jungle") currentLevel = 1;
+        else if (sceneName == "Level2_Tunnel") currentLevel = 2;
+        else if (sceneName == "Level3_Escape") currentLevel = 3;
         
         Debug.Log("GameManager started! Current Level: " + currentLevel);
+        
+        // Update UI
+        if (UIManager.Instance != null)
+        {
+            UIManager.Instance.UpdateCollectibles(collectedItems, totalItemsInLevel);
+            UIManager.Instance.UpdateLevel(currentLevel);
+        }
     }
     
     void Update()
@@ -34,9 +42,15 @@ public class GameManager : MonoBehaviour
         collectedItems++;
         Debug.Log("Collected: " + collectedItems + "/" + totalItemsInLevel);
         
-        if (collectedItems >= totalItemsInLevel)
+        // Update UI
+        if (UIManager.Instance != null)
         {
-            Debug.Log("All intel collected! Find the exit!");
+            UIManager.Instance.UpdateCollectibles(collectedItems, totalItemsInLevel);
+            
+            if (collectedItems >= totalItemsInLevel)
+            {
+                UIManager.Instance.UpdateStatus("All intel collected! Find the exit!");
+            }
         }
     }
     
@@ -51,13 +65,21 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Level " + currentLevel + " Complete!");
         
-        if (currentLevel >= 3)
+        // Check if this is the final level
+        if (currentLevel >= totalLevels)
         {
-            Debug.Log("MISSION COMPLETE! YOU WON THE WAR!");
+            Debug.Log("MISSION COMPLETE! YOU WON!");
+            
+            if (UIManager.Instance != null)
+            {
+                UIManager.Instance.ShowVictory();
+            }
+            
             Time.timeScale = 0f;
         }
         else
         {
+            // Load next level
             LoadNextLevel();
         }
     }
@@ -67,10 +89,15 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
         int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
         
+        // Check if next scene exists in build settings
         if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
         {
-            SceneManager.LoadScene(nextSceneIndex);
             Debug.Log("Loading next level...");
+            SceneManager.LoadScene(nextSceneIndex);
+        }
+        else
+        {
+            Debug.LogError("No next level found in build settings!");
         }
     }
 }
