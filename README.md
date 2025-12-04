@@ -26,6 +26,12 @@ The narrative blends **historical realism** with **mythic, cinematic tension**, 
 
 ---
 
+## 🎯 Game Objective
+
+*“Survive the shadows of war. Navigate the jungle and tunnels. Deliver the critical message before it’s too late.”*
+
+---
+
 ## 🌿 Game Features
 
 | Feature | Description |
