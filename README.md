@@ -1,6 +1,6 @@
 # 🌌 AstraVira Presents: **Shadows Over Củ Chi**
 
-**Tagline:** *“She walks through shadows. She survives the war.”*
+**Tagline:** *She walks through shadows. She survives the war.*
 
 ---
 
@@ -28,7 +28,7 @@ The narrative blends **historical realism** with **mythic, cinematic tension**, 
 
 ## 🎯 Game Objective
 
-*“Survive the shadows of war. Navigate the jungle and tunnels. Deliver the critical message before it’s too late.”*
+*Survive the shadows of war. Navigate the jungle and tunnels. Deliver the critical message before it’s too late.*
 
 ---
 
