@@ -1,9 +1,9 @@
-
 using UnityEngine;
 
 public class StealthManager : MonoBehaviour
 {
     public bool isHidden = false;
+    public float currentNoiseLevel = 3f;
     
     private Renderer playerRenderer;
     private Material playerMaterial;

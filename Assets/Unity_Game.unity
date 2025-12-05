@@ -436,6 +436,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StealthManager
   isHidden: 0
+  currentNoiseLevel: 3
   hiddenAlpha: 0.3
 --- !u!114 &267983320
 MonoBehaviour:
@@ -449,8 +450,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5725b9eedcce8086a64f2ab0138b742, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  moveSpeed: 5
+  walkSpeed: 5
+  sprintSpeed: 8
+  crouchSpeed: 2.5
   jumpForce: 7
+  groundCheckDistance: 0.3
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  standingHeight: 2
+  crouchHeight: 1
+  crouchTransitionSpeed: 10
+  walkNoiseRadius: 3
+  sprintNoiseRadius: 8
+  crouchNoiseRadius: 1
 --- !u!136 &267983321
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -549,6 +562,11 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!4 &267983325 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3fece85ac63eaaf63a0569e2c97e2884, type: 3}
+  m_PrefabInstance: {fileID: 267983317}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -1688,7 +1706,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10651, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 8e8f7caa24a50115a9dc8e10c7bbe4de, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1746,9 +1764,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 210d6f70f7fe18e658aac78ac0f69498, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyDetection
-  visionRange: 8
-  visionAngle: 45
-  player: {fileID: 0}
+  visionRange: 15
+  visionAngle: 60
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 0
+  detectionSpeed: 0.1
+  detectionDecaySpeed: 0.2
+  maxDetection: 100
+  detectionThreshold: 80
+  canHearPlayer: 1
+  maxHearingDistance: 15
+  alertDuration: 5
+  searchRadius: 10
+  investigationSpeed: 3
+  player: {fileID: 267983325}
+  headTransform: {fileID: 927414038}
+  detectionIndicator: {fileID: 0}
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  suspiciousColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  alertColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &1203084152
 GameObject:
   m_ObjectHideFlags: 0
