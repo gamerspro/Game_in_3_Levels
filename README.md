@@ -1,6 +1,6 @@
 # 🌌 AstraVira Presents: **Shadows Over Củ Chi**
 
-**Tagline:** *She walks through shadows. She survives the war.*
+**Tagline:** *Survive the Darkness. Escape the War.*
 
 ---
 
