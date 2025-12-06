@@ -91,8 +91,7 @@ The narrative blends **historical realism** with **mythic, cinematic tension**, 
 
 ## ⚡ Team
 
-**Team Name:** AstraVira  
-**Team Members:** Aakanksha Garg , Alfiya Anjum , Palak Aggarwal , Anshika Singh
+**Team Name:** AstraVira
 
 ---
 
